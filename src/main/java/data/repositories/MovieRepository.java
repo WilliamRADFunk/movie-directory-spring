@@ -97,6 +97,10 @@ public class MovieRepository implements IMovieRepository {
 				sqlStatement = sqlConnection.prepareStatement("DELETE FROM Movies WHERE `ID`=?;");
 				sqlStatement.setInt(1, id);
 				int numRowsAffected = sqlStatement.executeUpdate();
+				
+				sqlConnection.close();
+				sqlStatement.close();
+				myResult.close();
 
 				if(numRowsAffected > 0) {
 					return movie;
@@ -106,6 +110,9 @@ public class MovieRepository implements IMovieRepository {
 				}
 			}
 			else {
+				sqlConnection.close();
+				sqlStatement.close();
+				myResult.close();
 				return null;
 			}
 		}
@@ -156,9 +163,15 @@ public class MovieRepository implements IMovieRepository {
 												myResult.getString("Date Created"),
 												myResult.getString("Date Modified")
 											);
+					sqlConnection.close();
+					sqlStatement.close();
+					myResult.close();
 					return movie;
 				}
 				else {
+					sqlConnection.close();
+					sqlStatement.close();
+					myResult.close();
 					return null;
 				}
 			}
@@ -201,9 +214,15 @@ public class MovieRepository implements IMovieRepository {
 									myResult.getString("Date Created"),
 									myResult.getString("Date Modified")
 								);
+				sqlConnection.close();
+				sqlStatement.close();
+				myResult.close();
 				return movie;
 			}
 			else {
+				sqlConnection.close();
+				sqlStatement.close();
+				myResult.close();
 				return null;
 			}
 		}
@@ -243,6 +262,9 @@ public class MovieRepository implements IMovieRepository {
 								);
 				movies.add(movie);
 			}
+			sqlConnection.close();
+			sqlStatement.close();
+			myResult.close();
 			return movies;
 		}
 		catch (SQLException | ClassNotFoundException e) {

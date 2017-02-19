@@ -1,10 +1,10 @@
 package web.viewmodels;
 
-public class Echo {
+public class EchoViewModel {
 	
 	private String msg;
 	
-	public Echo() {}
+	public EchoViewModel() {}
 
 	public String getMsg() {
 		return msg;

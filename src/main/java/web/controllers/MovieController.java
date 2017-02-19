@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import data.entities.Movie;
 import data.repositories.MovieRepository;
-import web.viewmodels.Echo;
+import web.viewmodels.EchoViewModel;
+import web.viewmodels.MovieViewModel;
 
 @RestController
 public class MovieController{
@@ -31,12 +32,12 @@ public class MovieController{
 	 */
 	@RequestMapping(
 	        value = "/echo",
-	        method = RequestMethod.POST,
+	        method = RequestMethod.PUT,
 	        consumes = MediaType.APPLICATION_JSON_VALUE,
 	        produces = MediaType.APPLICATION_JSON_VALUE
 	    )
-    public String putEcho(@RequestBody Echo echo) {
-		return echo.getMsg();
+    public EchoViewModel putEcho(@RequestBody EchoViewModel echo) {
+		return echo;
 	}
 	/**
 	 * Create movie.
@@ -100,9 +101,10 @@ public class MovieController{
 	@RequestMapping(
 	        value = "/movie",
 	        method = RequestMethod.PUT,
-	        produces = "application/json"
+	        consumes = MediaType.APPLICATION_JSON_VALUE,
+	        produces = MediaType.APPLICATION_JSON_VALUE
 	    )
-    public Movie editMovie(@RequestBody(required=true) Movie m) {
+    public MovieViewModel editMovie(@RequestBody(required=true) MovieViewModel m) {
 		
 		MovieRepository movRepo = new MovieRepository();
 		
@@ -140,7 +142,8 @@ public class MovieController{
 				return null;
 			}
 			else {
-				return movie;
+				MovieViewModel mvm = new MovieViewModel(movie.getId(), movie.getTitle(), movie.getSynopsis(), movie.getExpectedPopularity(), movie.getActualPopularity(), movie.getOptimalSeason(), movie.getWorstSeason(), movie.getCostLicense(), movie.getLicenseLength(), movie.getProducedBy(), movie.getDateCreated(), movie.getDateModified());
+				return mvm;
 			}
 		}
 		catch(Exception e)

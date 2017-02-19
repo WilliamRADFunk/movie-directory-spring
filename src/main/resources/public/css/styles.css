@@ -26,12 +26,20 @@ input[type="number"]
 	color: #000000;
 	text-align: center;
 }
-#form-create-movie
+#form-create-movie,
+#form-delete-movie,
+#form-get-movie
 {
 	margin-bottom: 50px;
 	margin-top: 50px;
 	text-align: center;
 }
+#form-create-movie button
+{
+	margin-top: 25px;
+}
+#create-movie-content > div > p,
+#delete-movie-content > div > p,
 #get-movie-content > div > p,
 #get-all-movies-content > div > p
 {
@@ -78,9 +86,11 @@ input[type="number"]
 }
 #index-content > p
 {
-	margin-top: 50px;
+	margin-top: 25px;
 }
 #movie,
+#movie-create,
+#movie-delete,
 .movies
 {
 	/* Image from: https://openclipart.org/user-detail/Moini */
@@ -132,6 +142,8 @@ input[type="number"]
 @media (min-width: 500px) {
 }
 @media (min-width: 768px) {
+	#create-movie-content > div > p,
+	#delete-movie-content > div > p,
 	#get-movie-content > div > p,
 	#get-all-movies-content > div > p
 	{
@@ -140,6 +152,8 @@ input[type="number"]
 }
 @media (min-width: 992px) {
 	#movie,
+	#movie-create,
+	#movie-delete,
 	.movies
 	{
 		/* Modified image from: https://openclipart.org/user-detail/Moini */

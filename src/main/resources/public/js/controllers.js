@@ -4,6 +4,7 @@ movieDirectoryApp.controller("MainController", ["mainData", function(main)
 	var self = this;
 
 	self.state = "index";
+	self.response = main.response;
 	self.errors = main.errors;
 
 	self.movie = main.movie;
@@ -43,6 +44,10 @@ movieDirectoryApp.controller("MainController", ["mainData", function(main)
 	self.createMovie = function()
 	{
 		main.createMovie(self.movie.title, self.movie.synopsis, self.movie.optimalSeason, self.movie.worstSeason, self.movie.costLicense, self.movie.licenseLength, self.movie.producedBy);
+	}
+	self.editMovie = function()
+	{
+		main.editMovie(self.movie.id, self.movie.title, self.movie.synopsis, self.movie.optimalSeason, self.movie.worstSeason, self.movie.costLicense, self.movie.licenseLength, self.movie.producedBy);
 	}
 	self.deleteMovie = function(id)
 	{

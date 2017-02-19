@@ -28,18 +28,21 @@ input[type="number"]
 }
 #form-create-movie,
 #form-delete-movie,
+#form-edit-movie,
 #form-get-movie
 {
 	margin-bottom: 50px;
 	margin-top: 50px;
 	text-align: center;
 }
-#form-create-movie button
+#form-create-movie button,
+#form-edit-movie button
 {
 	margin-top: 25px;
 }
 #create-movie-content > div > p,
 #delete-movie-content > div > p,
+#edit-movie-content > div > p,
 #get-movie-content > div > p,
 #get-all-movies-content > div > p
 {
@@ -144,6 +147,7 @@ input[type="number"]
 @media (min-width: 768px) {
 	#create-movie-content > div > p,
 	#delete-movie-content > div > p,
+	#edit-movie-content > div > p,
 	#get-movie-content > div > p,
 	#get-all-movies-content > div > p
 	{

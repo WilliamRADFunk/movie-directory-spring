@@ -2,10 +2,15 @@ package web.viewmodels;
 
 public class Echo {
 	
-	public String msg = "Hello...ello...lo...o...";
+	private String msg;
+	
+	public Echo() {}
 
-	public Echo() {
-		// TODO Auto-generated constructor stub
+	public String getMsg() {
+		return msg;
 	}
 
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
 }

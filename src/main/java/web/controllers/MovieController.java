@@ -3,6 +3,7 @@ package web.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,24 +19,24 @@ import web.viewmodels.Echo;
 public class MovieController{
 	
 	@RequestMapping(
-        value = "/",
+        value = "html",
         method = RequestMethod.GET,
         produces = "application/json"
     )
     public String index() {
-        return "{\"Echo\":\"Hello Java Spring Framework\"}";
+        return "/index.html";
     }
 	/**
 	 * Put echo.
 	 */
 	@RequestMapping(
 	        value = "/echo",
-	        method = RequestMethod.PUT,
-	        produces = "application/json",
-	        consumes = "multipart/form-data"
+	        method = RequestMethod.POST,
+	        consumes = MediaType.APPLICATION_JSON_VALUE,
+	        produces = MediaType.APPLICATION_JSON_VALUE
 	    )
-    public String putEcho(@RequestBody(required=true) Echo echo) {
-		return echo.msg;
+    public String putEcho(@RequestBody Echo echo) {
+		return echo.getMsg();
 	}
 	/**
 	 * Create movie.

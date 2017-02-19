@@ -6,9 +6,67 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,IE=11,IE=EmulateIE11,IE=10,IE=EmulateIE10,IE=9,IE=EmulateIE9,IE=8,IE=EmulateIE8,IE=7,IE=EmulateIE7" />
 
-	<title>Cinema Tycoon Movie Directory</title>
+<title>Cinema Tycoon Movie Directory</title>
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Customized styles by William R.A.D. Funk -->
+<link rel="stylesheet" href="css/styles.css">
+<!-- Angular Framework scripts by the folks at Angular -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+<!-- JQUERY Library for additional functionality -->
+<script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="js/respond.min.js"></script>
+<!-- Main Angular app declaration by William R.A.D. Funk -->
+<script type="text/javascript" src="js/app.js"></script>
+<!-- Custom Angular services by William R.A.D. Funk -->
+<script type="text/javascript" src="js/services.js"></script>
+<!-- Custom Angular controllers by William R.A.D. Funk -->
+<script type="text/javascript" src="js/controllers.js"></script>
 
 </head>
 <body>
-<p>Hello World!</p>
+	<div class="container" ng-app="movieDirectoryApp">
+		<div ng-controller="MainController as mainCtrl">
+			<div id="header" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<h1>Cinema Tycoon</h1>
+				<h3>Movie Directory</h3>
+				<h6>a <a href="http://www.williamrobertfunk.com/" target="_blank">William Robert Funk</a> creation</h6>
+			</div>
+			<div id="nav" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<ul>
+					<li><button class="btn btn-primary">Get Movie</button></li>
+					<li><button class="btn btn-primary">Get All Movies</button></li>
+					<li><button class="btn btn-primary">Create Movie</button></li>
+					<li><button class="btn btn-primary">Edit Movie</button></li>
+					<li><button class="btn btn-primary">Delete Movie</button></li>
+					<li><button class="btn btn-primary">Play Cinema Tycoon"</button></li>
+				</ul>
+			</div>
+			<div id="index-content" class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12" ng-show="indexCtrl.state !== 'index'">
+				<p>This movie directory is a raw Java MVC application using RESTful API principles to display the player-created movies in Cinema Tycoon,
+				a game described below and available to play by pressing the button above.</p>
+				<p>Cinema Tycoon is an AngularJs 1 game that allows the player to take control of a run-down Movie Theater.
+				The player can:</p>
+				<ul>
+					<li> Alter ticket prices</li>
+					<li> Upgrade the parking area</li>
+					<li> Purchase more concession snack options</li>
+					<li> Invest in more video games for the arcade</li>
+					<li> Hire or Fire employees</li>
+					<li> Run promotional advertisements</li>
+					<li> Build additional movie salons</li>
+					<li> Buy more seats for each of their salons</li>
+					<li> Improve screen size, projector quality, and sound intensity in each salon</li>
+					<li> Purchase movie licenses</li>
+					<li> Make their own database-persistent movies</li>
+					<li> Race against a ticking clock</li>
+					<li> Navigate random occurring events that improve or destabilize player's position</li>
+					<li> Compete for highest wealth in the shortest time on a leaderboard</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </body>

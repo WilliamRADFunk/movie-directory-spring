@@ -45,17 +45,10 @@ public class MovieController{
 	@RequestMapping(
 	        value = "/movie",
 	        method = RequestMethod.POST,
-	        produces = "application/json"
+	        consumes = MediaType.APPLICATION_JSON_VALUE,
+	        produces = MediaType.APPLICATION_JSON_VALUE
 	    )
-    public Movie createMovie(
-    		@RequestParam(required=true) String title,
-    		@RequestParam(required=true) String synopsis,
-    		@RequestParam(required=true) int optimalSeason,
-    		@RequestParam(required=true) int worstSeason,
-    		@RequestParam(required=true) double costLicense,
-    		@RequestParam(required=true) int licenseLength,
-    		@RequestParam(required=true) String producedBy
-    	) {
+    public MovieViewModel createMovie(@RequestBody(required=true) MovieViewModel m) {
 		
 		MovieRepository movRepo = new MovieRepository();
 		
@@ -69,11 +62,16 @@ public class MovieController{
 		String dateCreated = currentTime;
 		String dateModified = currentTime;
 		
-		Movie mov = new Movie(0, title, synopsis, expectedPopularity, actualPopularity, optimalSeason, worstSeason, costLicense, licenseLength, producedBy, dateCreated, dateModified);
+		Movie mov = new Movie(0, m.getTitle(), m.getSynopsis(), expectedPopularity, actualPopularity, m.getOptimalSeason(), m.getWorstSeason(), m.getCostLicense(), m.getLicenseLength(), m.getProducedBy(), dateCreated, dateModified);
 		Movie movie = movRepo.createMovie(mov);
 		
-		if(movie == null) return null;
-		else return movie;
+		if(movie == null) {
+			return null;
+		}
+		else {
+			MovieViewModel mvm = new MovieViewModel(movie);
+			return mvm;
+		}
     }
 	/**
 	 * Delete movie.
@@ -108,25 +106,7 @@ public class MovieController{
 		
 		MovieRepository movRepo = new MovieRepository();
 		
-		int id;
-		String title;
-		String synopsis;
-		int optimalSeason;
-		int worstSeason;
-		double costLicense;
-		int licenseLength;
-		String producedBy;
-		
-		
 		try {
-			id = m.getId();
-			title = m.getTitle();
-			synopsis = m.getSynopsis();
-			optimalSeason = m.getOptimalSeason();
-			worstSeason = m.getWorstSeason();
-			costLicense = m.getCostLicense();
-			licenseLength = m.getLicenseLength();
-			producedBy = m.getProducedBy();
 			
 			java.util.Date dt = new java.util.Date();
 			java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -135,14 +115,14 @@ public class MovieController{
 			String dateCreated = currentTime;
 			String dateModified = currentTime;
 			
-			Movie mov = new Movie(id, title, synopsis, 0.0, 0.0, optimalSeason, worstSeason, costLicense, licenseLength, producedBy, dateCreated, dateModified);
+			Movie mov = new Movie(m.getId(), m.getTitle(), m.getSynopsis(), 0.0, 0.0, m.getOptimalSeason(), m.getWorstSeason(), m.getCostLicense(), m.getLicenseLength(), m.getProducedBy(), dateCreated, dateModified);
 			Movie movie = movRepo.editMovie(mov);
 			
 			if(movie == null) {
 				return null;
 			}
 			else {
-				MovieViewModel mvm = new MovieViewModel(movie.getId(), movie.getTitle(), movie.getSynopsis(), movie.getExpectedPopularity(), movie.getActualPopularity(), movie.getOptimalSeason(), movie.getWorstSeason(), movie.getCostLicense(), movie.getLicenseLength(), movie.getProducedBy(), movie.getDateCreated(), movie.getDateModified());
+				MovieViewModel mvm = new MovieViewModel(movie);
 				return mvm;
 			}
 		}

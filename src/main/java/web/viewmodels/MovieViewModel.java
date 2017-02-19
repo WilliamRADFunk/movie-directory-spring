@@ -1,5 +1,7 @@
 package web.viewmodels;
 
+import data.entities.Movie;
+
 public class MovieViewModel {
 	
 	private int id;
@@ -16,6 +18,21 @@ public class MovieViewModel {
 	private String dateModified;
 	
 	public MovieViewModel() {}
+	
+	public MovieViewModel(Movie m) {
+		this.id = m.getId();
+		this.title = m.getTitle();
+		this.synopsis = m.getSynopsis();
+		this.expectedPopularity = m.getExpectedPopularity();
+		this.actualPopularity = m.getActualPopularity();
+		this.optimalSeason = m.getOptimalSeason();
+		this.worstSeason = m.getWorstSeason();
+		this.costLicense = m.getCostLicense();
+		this.licenseLength = m.getLicenseLength();
+		this.producedBy = m.getProducedBy();
+		this.dateCreated = m.getDateCreated();
+		this.dateModified = m.getDateModified();
+	}
 	
 	public MovieViewModel(int id, String title, String synopsis, double expectedPopularity, double actualPopularity, int optimalSeason, int worstSeason, double costLicense, int licenseLength, String producedBy, String dateCreated, String dateModified) {
 		this.id = id;
